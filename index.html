@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatMode - Agentes de IA para E-commerce</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">ChatMode</div>
+            <a href="https://api.whatsapp.com/message/3R3M3MP7UA2AN1?autoload=1&app_absent=0" class="cta-button" target="_blank" rel="noopener noreferrer">Fale Conosco</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="animate-text">Transforme seu E-commerce com IA</h1>
+                <p class="animate-text delay-1">Atendimento inteligente 24/7 que aumenta suas vendas e satisfação dos clientes</p>
+                <a href="https://api.whatsapp.com/message/3R3M3MP7UA2AN1?autoload=1&app_absent=0" class="cta-button animate-text delay-2" target="_blank" rel="noopener noreferrer">Fale Conosco</a>
+            </div>
+            <div class="hero-image animate-image">
+                <img src="./ecommerce.jpg" alt="ChatMode em ação">
+            </div>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title animate-text">Como Funciona</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-card">
+                    <h3>Integração Simples</h3>
+                    <p>Adicione o ChatMode ao seu e-commerce com apenas algumas linhas de código</p>
+                </div>
+                <div class="feature-card animate-card delay-1">
+                    <h3>IA Inteligente</h3>
+                    <p>Nossos agentes aprendem com cada interação para melhorar o atendimento</p>
+                </div>
+                <div class="feature-card animate-card delay-2">
+                    <h3>Personalização</h3>
+                    <p>Adapte o comportamento do agente às necessidades do seu negócio</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="agent-section">
+            <div class="agent-content">
+                <h2 class="section-title animate-text">Como funciona o agente?</h2>
+                <div class="agent-text animate-text delay-1">
+                    <p>O ChatMode integra-se perfeitamente ao seu e-commerce através do Google Merchant Center. Nosso agente de IA:</p>
+                    <ul class="agent-list">
+                        <li>Lê o arquivo XML do seu Google Merchant Center</li>
+                        <li>Acessa seu catálogo de produtos ativo</li>
+                        <li>Fornece atendimento personalizado 24/7</li>
+                    </ul>
+                    <p class="highlight-text">Imagine um atendimento que trabalha 24 horas por dia, 7 dias por semana.</p>
+                    <p class="scenario-text">Sabe aquele usuário que está pronto para comprar mas quer tirar apenas uma dúvida e por não ter ninguém online naquele momento do atendimento ele desiste? O ChatMode estaria ali!</p>
+                </div>
+            </div>
+            <div class="agent-image animate-image">
+                <img src="./chatmode.jpg" alt="Agente ChatMode em ação">
+            </div>
+        </section>
+
+        <section class="final-section">
+            <div class="final-content">
+                <h2 class="section-title animate-text">Veja o ChatMode em ação</h2>
+                <div class="final-text animate-text delay-1">
+                    <p class="final-message">Está vendo esse chat aqui no canto? Ele está vinculado com o catálogo de produtos do seu Merchant Center. Imagine esse chat no seu e-commerce!</p>
+                    <a href="https://api.whatsapp.com/message/3R3M3MP7UA2AN1?autoload=1&app_absent=0" class="cta-button animate-text delay-2" target="_blank" rel="noopener noreferrer">Quero esse chat no meu e-commerce</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 ChatMode. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    </script>
+</body>
+</html>
