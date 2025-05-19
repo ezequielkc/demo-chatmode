@@ -1,27 +1,36 @@
-/* Reset e estilos base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 :root {
-    /* Light Theme */
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary: #7c3aed;
-    --accent: #f59e0b;
-    --text-dark: #1a1a1a;
-    --text-light: #666;
-    --bg-light: #f8f9fa;
+    /* Tema Claro - Cores principais */
+    --primary: #2563eb;      /* Azul principal */
+    --primary-dark: #1d4ed8; /* Azul mais escuro para hover */
+    --secondary: #7c3aed;    /* Roxo para gradientes */
+    --accent: #f59e0b;       /* Laranja para destaques */
+    --text-dark: #1a1a1a;    /* Texto principal */
+    --text-light: #666;      /* Texto secundário */
+    --bg-light: #f8f9fa;     /* Fundo claro */
+    
+    /* Gradientes e efeitos */
     --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    
+    /* Cores de componentes */
     --card-bg: #ffffff;
     --header-bg: rgba(255, 255, 255, 0.95);
     --hero-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     --agent-bg: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
 }
 
+/* 
+ Tema Escuro
+ Sobrescreve as cores do tema claro quando ativo
+ Mantém a mesma estrutura para facilitar a manutenção
+ */
 [data-theme="dark"] {
     --primary: #3b82f6;
     --primary-dark: #2563eb;
@@ -42,6 +51,11 @@
     --scenario-bg: rgba(59, 130, 246, 0.1);
 }
 
+/* 
+ Estilos base do corpo
+ Definimos a fonte padrão e algumas propriedades básicas
+ que serão herdadas por todos os elementos
+ */
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -51,7 +65,10 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Header e Navegação */
+/* 
+ Cabeçalho e Navegação
+ Header fixo com efeito de vidro (glassmorphism) e animação suave ao carregar
+ */
 .header {
     background: var(--header-bg);
     backdrop-filter: blur(10px);
@@ -63,6 +80,10 @@ body {
     animation: slideDown 0.5s ease-out;
 }
 
+/* 
+ Container da navegação
+ Centraliza o conteúdo e organiza os elementos
+ */
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -72,6 +93,10 @@ body {
     align-items: center;
 }
 
+/* 
+ Logo com efeito de gradiente
+ Adiciona uma linha animada no hover
+ */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
@@ -96,24 +121,11 @@ body {
     width: 100%;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: #0070f3;
-}
-
-/* Hero Section */
+/* 
+ Seção Hero
+ Primeira seção da página com título e imagem
+ Gradiente suave e efeito de pulso no fundo
+ */
 .hero {
     padding: 4rem 2rem 3rem;
     background: var(--hero-bg);
@@ -127,6 +139,10 @@ body {
     overflow: hidden;
 }
 
+/* 
+ Efeito de pulso no fundo do hero
+ Gradiente radial
+ */
 .hero::before {
     content: '';
     position: absolute;
@@ -138,6 +154,10 @@ body {
     animation: pulse 4s ease-in-out infinite;
 }
 
+/* 
+ Conteúdo do Hero
+ Organiza o texto e botão de forma responsiva
+ */
 .hero-content {
     flex: 1;
     padding-right: 3rem;
@@ -160,6 +180,10 @@ body {
     max-width: 600px;
 }
 
+/* 
+ Imagem do Hero
+ Adiciona sombra e efeito de hover
+ */
 .hero-image {
     flex: 1;
     position: relative;
@@ -176,7 +200,11 @@ body {
     transform: scale(1.02);
 }
 
-/* Features Section */
+/* 
+ Seção de Features
+ Cards com informações sobre o produto
+ Usa grid para layout responsivo
+ */
 .features {
     padding: 4rem 2rem;
     background: var(--bg-light);
@@ -193,6 +221,10 @@ body {
     position: relative;
 }
 
+/* 
+ Linha decorativa abaixo dos títulos
+ Usa a cor primária com gradiente
+ */
 .section-title::after {
     content: '';
     position: absolute;
@@ -205,6 +237,10 @@ body {
     border-radius: 2px;
 }
 
+/* 
+ Grid de cards
+ Layout responsivo que se adapta ao tamanho da tela
+ */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -213,6 +249,10 @@ body {
     margin: 0 auto;
 }
 
+/* 
+ Cards de features
+ Efeito de hover com elevação e brilho
+ */
 .feature-card {
     background: var(--card-bg);
     padding: 2.5rem;
@@ -258,7 +298,11 @@ body {
     font-size: 1rem;
 }
 
-/* Agent Section */
+/* 
+ Seção do Agente
+ Explica como o agente funciona
+ Layout em duas colunas com imagem
+ */
 .agent-section {
     padding: 5rem 2rem;
     background: var(--agent-bg);
@@ -278,6 +322,10 @@ body {
     color: var(--text-light);
 }
 
+/* 
+ Lista de funcionalidades do agente
+ Setas como marcadores
+ */
 .agent-list {
     list-style: none;
     margin: 1.5rem 0;
@@ -297,6 +345,10 @@ body {
     color: var(--primary);
 }
 
+/* 
+ Texto destacado
+ Usa borda lateral e fundo para destaque
+ */
 .highlight-text {
     font-size: 1.25rem;
     font-weight: 600;
@@ -309,6 +361,10 @@ body {
     box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
 }
 
+/* 
+ Texto de cenário
+ Estilo difere para exemplos
+ */
 .scenario-text {
     font-size: 1rem;
     color: var(--text-light);
@@ -319,22 +375,11 @@ body {
     border-radius: 8px;
 }
 
-.agent-image {
-    flex: 1;
-}
-
-.agent-image img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
-    transition: transform 0.3s ease;
-}
-
-.agent-image:hover img {
-    transform: scale(1.02);
-}
-
-/* CTA Button */
+/* 
+ Botão CTA
+ Estilo principa
+ Inclui efeito de brilho no hover
+ */
 .cta-button {
     display: inline-block;
     background: var(--gradient-primary);
@@ -375,34 +420,116 @@ body {
     height: 300px;
 }
 
-/* Chat Bubble */
-.chat-bubble {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 1000;
+/* 
+Seção Final
+ Usa gradiente e efeitos visuais
+ */
+.final-section {
+    padding: 8rem 2rem;
+    background: var(--gradient-primary);
+    position: relative;
+    overflow: hidden;
+    margin-top: 4rem;
 }
 
-.chat-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #0070f3;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
+.final-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.1;
 }
 
-.chat-button:hover {
-    transform: scale(1.1);
+.final-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
 }
 
-.chat-button span {
+.final-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.final-text {
+    margin-top: 2rem;
+}
+
+.final-message {
     font-size: 1.5rem;
+    line-height: 1.6;
+    color: white;
+    margin-bottom: 3rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+    display: inline-block;
 }
 
-/* Footer */
+.final-message::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* 
+ Botão CTA da seção final
+ */
+.final-section .cta-button {
+    background: white;
+    color: var(--primary);
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.final-section .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.final-section .cta-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    background: var(--accent);
+    color: white;
+}
+
+.final-section .cta-button:hover::before {
+    transform: translateX(100%);
+}
+
+/* 
+ Rodapé
+ */
 .footer {
     background: var(--card-bg);
     color: var(--text-light);
@@ -438,7 +565,34 @@ body {
     opacity: 1;
 }
 
-/* Animações */
+/* 
+ Botão de alternar tema
+ Fixo no canto inferior esquerdo
+ */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 1000;
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    color: var(--text-dark);
+    padding: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+}
+
+/* 
+ Animações
+ */
 @keyframes slideDown {
     from {
         transform: translateY(-100%);
@@ -507,6 +661,10 @@ body {
     }
 }
 
+/* 
+ Classes de animação
+ Aplicadas aos elementos para efeitos
+ */
 .animate-text {
     opacity: 0;
     animation: slideInLeft 0.8s ease-out forwards;
@@ -531,7 +689,10 @@ body {
     animation-delay: 0.3s;
 }
 
-/* Responsividade */
+/* 
+ Media Queries
+ Ajustes para telas menores
+ */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -579,144 +740,6 @@ body {
 
     .section-title {
         font-size: 1.75rem;
-    }
-
-    .final-message {
-        font-size: 1.25rem;
-    }
-
-    .final-section .cta-button {
-        font-size: 1rem;
-        padding: 0.875rem 1.75rem;
-    }
-}
-
-/* Final Section */
-.final-section {
-    padding: 8rem 2rem;
-    background: var(--gradient-primary);
-    position: relative;
-    overflow: hidden;
-    margin-top: 4rem;
-}
-
-.final-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
-    opacity: 0.1;
-}
-
-.final-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
-}
-
-.final-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.final-text {
-    margin-top: 2rem;
-}
-
-.final-message {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    color: white;
-    margin-bottom: 3rem;
-    font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    position: relative;
-    display: inline-block;
-}
-
-.final-message::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
-}
-
-.final-section .cta-button {
-    background: white;
-    color: var(--primary);
-    font-size: 1.125rem;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.final-section .cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.final-section .cta-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    background: var(--accent);
-    color: white;
-}
-
-.final-section .cta-button:hover::before {
-    transform: translateX(100%);
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-    position: fixed;
-    bottom: 2rem;
-    left: 2rem;
-    z-index: 1000;
-    background: var(--card-bg);
-    border: 2px solid var(--primary);
-    color: var(--text-dark);
-    padding: 0.8rem;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1);
-    background: var(--primary);
-    color: white;
-}
-
-@media (max-width: 768px) {
-    .final-section {
-        padding: 6rem 1rem;
     }
 
     .final-message {
