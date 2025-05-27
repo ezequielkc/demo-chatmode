@@ -4,750 +4,581 @@
     box-sizing: border-box;
 }
 
-
-:root {
-    /* Tema Claro - Cores principais */
-    --primary: #2563eb;      /* Azul principal */
-    --primary-dark: #1d4ed8; /* Azul mais escuro para hover */
-    --secondary: #7c3aed;    /* Roxo para gradientes */
-    --accent: #f59e0b;       /* Laranja para destaques */
-    --text-dark: #1a1a1a;    /* Texto principal */
-    --text-light: #666;      /* Texto secundário */
-    --bg-light: #f8f9fa;     /* Fundo claro */
-    
-    /* Gradientes e efeitos */
-    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-    --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-    
-    /* Cores de componentes */
-    --card-bg: #ffffff;
-    --header-bg: rgba(255, 255, 255, 0.95);
-    --hero-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    --agent-bg: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-}
-
-/* 
- Tema Escuro
- Sobrescreve as cores do tema claro quando ativo
- Mantém a mesma estrutura para facilitar a manutenção
- */
-[data-theme="dark"] {
-    --primary: #3b82f6;
-    --primary-dark: #2563eb;
-    --secondary: #8b5cf6;
-    --accent: #f59e0b;
-    --text-dark: #f3f4f6;
-    --text-light: #d1d5db;
-    --bg-light: #111827;
-    --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-    --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-    --card-bg: #1f2937;
-    --header-bg: rgba(17, 24, 39, 0.95);
-    --hero-bg: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-    --agent-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-    --feature-title: #3b82f6;
-    --feature-text: #d1d5db;
-    --highlight-bg: #2d3748;
-    --scenario-bg: rgba(59, 130, 246, 0.1);
-}
-
-/* 
- Estilos base do corpo
- Definimos a fonte padrão e algumas propriedades básicas
- que serão herdadas por todos os elementos
- */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
-    color: var(--text-dark);
-    background-color: var(--bg-light);
-    overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #333;
+    background-color: #fff;
 }
 
-/* 
- Cabeçalho e Navegação
- Header fixo com efeito de vidro (glassmorphism) e animação suave ao carregar
- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styles */
 .header {
-    background: var(--header-bg);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    animation: slideDown 0.5s ease-out;
 }
 
-/* 
- Container da navegação
- Centraliza o conteúdo e organiza os elementos
- */
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.5rem;
+.header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 80px;
+    padding: 0 20px;
 }
 
-/* 
- Logo com efeito de gradiente
- Adiciona uma linha animada no hover
- */
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    position: relative;
-}
-
-.logo::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: width 0.3s ease;
-}
-
-.logo:hover::after {
-    width: 100%;
-}
-
-/* 
- Seção Hero
- Primeira seção da página com título e imagem
- Gradiente suave e efeito de pulso no fundo
- */
-.hero {
-    padding: 4rem 2rem 3rem;
-    background: var(--hero-bg);
-    min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0066cc;
+    margin-bottom: 4px;
+}
+
+.logo span {
+    color: #666;
+    font-weight: 400;
+}
+
+.demo-banner {
+    font-size: 12px;
+    color: #666;
+    background-color: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
+}
+
+/* Hamburger Menu Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Main Navigation */
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #0066cc;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .header .container {
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    .logo {
+        align-items: flex-start;
+    }
+
+    .logo h1 {
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+
+    .demo-banner {
+        font-size: 10px;
+        padding: 2px 6px;
+        margin-top: 2px;
+    }
+
+    .menu-toggle {
+        display: block;
+        padding: 8px;
+    }
+
+    .menu-toggle span {
+        width: 20px;
+        height: 2px;
+        margin: 4px 0;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: #fff;
+        padding: 60px 20px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav.active {
+        right: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav a {
+        display: block;
+        font-size: 16px;
+        padding: 8px 0;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .header .container {
+        padding: 0 20px;
+    }
+}
+
+/* Hero section */
+.hero {
+    padding: 160px 0 80px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #0066cc;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Steps section */
+.steps {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.steps h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 60px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-    overflow: hidden;
+    padding: 0 20px;
 }
 
-/* 
- Efeito de pulso no fundo do hero
- Gradiente radial
- */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+.step-card {
+    background: #fff;
+    padding: 40px 30px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
-    animation: pulse 4s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 
- Conteúdo do Hero
- Organiza o texto e botão de forma responsiva
- */
-.hero-content {
-    flex: 1;
-    padding-right: 3rem;
-    position: relative;
+.step-card:hover {
+    transform: translateY(-5px);
 }
 
-.hero-content h1 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: var(--text-dark);
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    width: 40px;
+    height: 40px;
+    background: #0066cc;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
     font-weight: 700;
-    position: relative;
 }
 
-.hero-content p {
-    font-size: 1.125rem;
-    margin-bottom: 2.5rem;
-    color: var(--text-light);
-    max-width: 600px;
+.step-card h3 {
+    font-size: 20px;
+    color: #0066cc;
+    margin: 20px 0 15px;
 }
 
-/* 
- Imagem do Hero
- Adiciona sombra e efeito de hover
- */
-.hero-image {
-    flex: 1;
-    position: relative;
+.step-card p {
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1;
 }
 
-.hero-image img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+/* Tablet */
+@media (max-width: 1024px) {
+    .steps-grid {
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .step-card {
+        padding: 35px 25px 25px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .steps {
+        padding: 60px 0;
+    }
+
+    .steps h2 {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .step-card {
+        padding: 35px 25px 25px;
+    }
+
+    .step-number {
+        top: -15px;
+        left: 25px;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .step-card h3 {
+        font-size: 18px;
+        margin: 15px 0 10px;
+    }
+
+    .step-card p {
+        font-size: 15px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .steps {
+        padding: 40px 0;
+    }
+
+    .steps-grid {
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .step-card {
+        padding: 30px 20px 20px;
+    }
+
+    .header .container {
+        height: 50px;
+        padding: 0 10px;
+    }
+
+    .logo h1 {
+        font-size: 18px;
+    }
+
+    .demo-banner {
+        font-size: 9px;
+        padding: 2px 4px;
+    }
+
+    .menu-toggle {
+        padding: 6px;
+    }
+
+    .menu-toggle span {
+        width: 18px;
+        margin: 3px 0;
+    }
+}
+
+/* Widget section */
+.widget-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.widget-section h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+
+.widget-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
     transition: transform 0.3s ease;
 }
 
-.hero-image:hover img {
-    transform: scale(1.02);
-}
-
-/* 
- Seção de Features
- Cards com informações sobre o produto
- Usa grid para layout responsivo
- */
-.features {
-    padding: 4rem 2rem;
-    background: var(--bg-light);
-    position: relative;
-    overflow: hidden;
-}
-
-.section-title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--text-dark);
-    font-weight: 700;
-    position: relative;
-}
-
-/* 
- Linha decorativa abaixo dos títulos
- Usa a cor primária com gradiente
- */
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
-}
-
-/* 
- Grid de cards
- Layout responsivo que se adapta ao tamanho da tela
- */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* 
- Cards de features
- Efeito de hover com elevação e brilho
- */
-.feature-card {
-    background: var(--card-bg);
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(37, 99, 235, 0.1);
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(37, 99, 235, 0.05), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.feature-card:hover {
+.widget-container:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(37, 99, 235, 0.1);
-    border-color: rgba(37, 99, 235, 0.2);
 }
 
-.feature-card:hover::before {
-    transform: translateX(100%);
-}
-
-.feature-card h3 {
-    color: var(--feature-title, var(--primary));
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.feature-card p {
-    color: var(--feature-text, var(--text-light));
-    font-size: 1rem;
-}
-
-/* 
- Seção do Agente
- Explica como o agente funciona
- Layout em duas colunas com imagem
- */
-.agent-section {
-    padding: 5rem 2rem;
-    background: var(--agent-bg);
+.cta-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    gap: 20px;
 }
 
-.agent-content {
-    flex: 1;
+.cta-icon {
+    font-size: 40px;
+    color: #0066cc;
 }
 
-.agent-text {
-    font-size: 1rem;
-    color: var(--text-light);
+.cta-container p {
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+    margin: 0;
 }
 
-/* 
- Lista de funcionalidades do agente
- Setas como marcadores
- */
-.agent-list {
-    list-style: none;
-    margin: 1.5rem 0;
-}
-
-.agent-list li {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    position: relative;
-    color: var(--text-light);
-}
-
-.agent-list li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-}
-
-/* 
- Texto destacado
- Usa borda lateral e fundo para destaque
- */
-.highlight-text {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin: 2rem 0;
-    padding: 1rem;
-    background: var(--highlight-bg, white);
-    border-radius: 8px;
-    border-left: 4px solid var(--primary);
-    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.1);
-}
-
-/* 
- Texto de cenário
- Estilo difere para exemplos
- */
-.scenario-text {
-    font-size: 1rem;
-    color: var(--text-light);
-    font-style: italic;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: var(--scenario-bg, rgba(37, 99, 235, 0.05));
-    border-radius: 8px;
-}
-
-/* 
- Botão CTA
- Estilo principa
- Inclui efeito de brilho no hover
- */
 .cta-button {
     display: inline-block;
-    background: var(--gradient-primary);
-    color: white;
-    padding: 0.875rem 1.75rem;
-    border-radius: 8px;
+    background-color: #0066cc;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 6px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-}
-
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+    font-size: 16px;
 }
 
 .cta-button:hover {
+    background-color: #0052a3;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.cta-button:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-/* 
-Seção Final
- Usa gradiente e efeitos visuais
- */
-.final-section {
-    padding: 8rem 2rem;
-    background: var(--gradient-primary);
-    position: relative;
-    overflow: hidden;
-    margin-top: 4rem;
-}
-
-.final-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
-    opacity: 0.1;
-}
-
-.final-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
-}
-
-.final-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.final-text {
-    margin-top: 2rem;
-}
-
-.final-message {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    color: white;
-    margin-bottom: 3rem;
-    font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    position: relative;
-    display: inline-block;
-}
-
-.final-message::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 2px;
-}
-
-/* 
- Botão CTA da seção final
- */
-.final-section .cta-button {
-    background: white;
-    color: var(--primary);
-    font-size: 1.125rem;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.final-section .cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.final-section .cta-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    background: var(--accent);
-    color: white;
-}
-
-.final-section .cta-button:hover::before {
-    transform: translateX(100%);
-}
-
-/* 
- Rodapé
- */
-.footer {
-    background: var(--card-bg);
-    color: var(--text-light);
-    text-align: center;
-    padding: 2rem;
-    animation: fadeIn 0.5s ease-out;
-    border-top: 1px solid rgba(37, 99, 235, 0.1);
-    position: relative;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        var(--primary),
-        transparent
-    );
-}
-
-.footer p {
-    font-size: 0.875rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.footer:hover p {
-    opacity: 1;
-}
-
-/* 
- Botão de alternar tema
- Fixo no canto inferior esquerdo
- */
-.theme-toggle {
-    position: fixed;
-    bottom: 2rem;
-    left: 2rem;
-    z-index: 1000;
-    background: var(--card-bg);
-    border: 2px solid var(--primary);
-    color: var(--text-dark);
-    padding: 0.8rem;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1);
-    background: var(--primary);
-    color: white;
-}
-
-/* 
- Animações
- */
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.3;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-}
-
-/* 
- Classes de animação
- Aplicadas aos elementos para efeitos
- */
-.animate-text {
-    opacity: 0;
-    animation: slideInLeft 0.8s ease-out forwards;
-}
-
-.animate-card {
-    opacity: 0;
-    animation: slideInUp 0.8s ease-out forwards;
-}
-
-.delay-1 {
-    animation-delay: 0.2s;
-}
-
-.delay-2 {
-    animation-delay: 0.4s;
-}
-
-.animate-image {
-    opacity: 0;
-    animation: slideInRight 0.8s ease-out forwards;
-    animation-delay: 0.3s;
-}
-
-/* 
- Media Queries
- Ajustes para telas menores
- */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    .widget-section {
+        padding: 60px 0;
+    }
+
+    .widget-section h2 {
+        font-size: 22px;
+        padding: 0 20px;
+    }
+
+    .widget-container {
+        padding: 30px;
+    }
+
+    .cta-icon {
+        font-size: 36px;
+    }
+
+    .cta-container p {
+        font-size: 16px;
+    }
+
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .widget-section h2 {
+        font-size: 20px;
+        padding: 0 15px;
+    }
+
+    .widget-container {
+        padding: 25px;
+    }
+
+    .cta-icon {
+        font-size: 32px;
+    }
+
+    .cta-container p {
+        font-size: 15px;
+    }
+
+    .cta-button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        margin-top: 20px;
     }
 
     .hero {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 6rem;
+        padding: 120px 0 60px;
     }
 
-    .hero-content {
-        padding-right: 0;
-        margin-bottom: 3rem;
+    .hero h2 {
+        font-size: 32px;
+        padding: 0 10px;
     }
 
-    .hero-content h1 {
-        font-size: 2rem;
+    .hero p {
+        font-size: 18px;
     }
 
-    .hero-content p {
-        font-size: 1rem;
+    .steps h2 {
+        font-size: 28px;
     }
 
-    .hero-image {
-        width: 100%;
+    .step-card {
+        padding: 25px;
     }
 
-    .agent-section {
-        flex-direction: column;
-        text-align: center;
+    .step-number {
+        top: -15px;
+        left: 25px;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
     }
 
-    .agent-list li {
-        text-align: left;
+    .features h2,
+    .widget-section h2 {
+        font-size: 24px;
+        padding: 0 20px;
     }
 
-    .highlight-text {
-        font-size: 1.2rem;
+    .feature-card {
+        padding: 20px;
     }
 
-    .features-grid {
-        grid-template-columns: 1fr;
+    .widget-container {
+        padding: 30px;
+        border-radius: 12px;
     }
 
-    .section-title {
-        font-size: 1.75rem;
+    .cta-icon {
+        font-size: 40px;
     }
 
-    .final-message {
-        font-size: 1.25rem;
+    .cta-container p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .widget-section {
+        padding: 60px 0;
     }
 
-    .final-section .cta-button {
-        font-size: 1rem;
-        padding: 0.875rem 1.75rem;
+    .widget-section h2 {
+        font-size: 24px;
+        padding: 0 20px;
+    }
+
+    .widget-container {
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .cta-icon {
+        font-size: 36px;
+    }
+
+    .cta-container p {
+        font-size: 18px;
     }
 } 
